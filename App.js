@@ -1,22 +1,21 @@
 import AppLoading from 'expo-app-loading';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
-import { Asset, useAssets } from 'expo-asset';
+import { useAssets } from 'expo-asset';
+import { NavigationContainer } from '@react-navigation/native';
+import Tabs from './navigation/Tab';
 
 export default function App() {
   const [assets] = useAssets([require('./assets/greeting.png')])
-  const [fonts] = Font.useFonts(Ionicons.font)
 
-  if(!assets || !fonts)
+  if(!assets)
   return (
     <AppLoading/>
   )
   return (
-    <View style = {styles.container}>
-      <Text>Your app started!!</Text>
-    </View>
+    <NavigationContainer>
+      <Tabs/>
+    </NavigationContainer>
   );
 }
 
