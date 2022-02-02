@@ -1,7 +1,7 @@
 # ReactNative_Nomad_MasterCLass
-ReactNative_Nomad_MasterCLass
+ReactNative_Nomad_MasterCLass    
 
-================ 
+-------------------------
    
    
 ### 어플설치
