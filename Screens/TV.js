@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Text} from 'react-native'
+import { StyleSheet, View, Text, ActivityIndicator} from 'react-native'
+import styled from 'styled-components/native'
 
 export default function TV(){
     return(
     <View style={styles.container}>
-        <Text>
-            TV
-        </Text>
+        <ActivityIndicator color="#0000ff"/>
     </View>
     );
 }

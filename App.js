@@ -1,25 +1,29 @@
 import AppLoading from 'expo-app-loading';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, useColorScheme } from 'react-native';
 import { useAssets } from 'expo-asset';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './navigation/Tab';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-import styled from 'styled-components/native';
+import styled, { ThemeProvider } from 'styled-components/native'
+import { darkTheme, lightTheme } from './styles/styled';
 
 export default function App() {
   const [assets] = useAssets([require('./assets/greeting.png')])
   const [fonts] = useFonts(Ionicons.font)
+  const isDark = useColorScheme() === "Dark"
 
-  if(!assets || !fonts)
+  if (!assets || !fonts)
+    return (
+      <AppLoading />
+    )
   return (
-    <AppLoading/>
-  )
-  return (
-    <NavigationContainer>
-      <Tabs/>
-    </NavigationContainer>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <NavigationContainer>
+        <Tabs />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 

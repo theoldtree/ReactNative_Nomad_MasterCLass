@@ -12,7 +12,10 @@ const Tab = createBottomTabNavigator();
 export default function Tabs() {
   const isDark = useColorScheme() === "Dark";
   return (
-    <Tab.Navigator 
+    <Tab.Navigator
+      sceneContainerStyle={{
+        backgroundColor: isDark? BLACK_COLOR : "white"
+      }} 
       screenOptions={{
         tabBarLabelPosition: 'beside-icon',
         tabBarStyle : {
@@ -34,7 +37,7 @@ export default function Tabs() {
         },
         headerTitleAlign: "center"
       }}>
-      <Tab.Screen name="Movie" component={Movie} options={{
+      <Tab.Screen name="Movies" component={Movie} options={{
         tabBarIcon: ({focused,color,size}) => {
           return <Ionicons name={focused? "film" : "film-outline"} color={color} size={size}/>
         },

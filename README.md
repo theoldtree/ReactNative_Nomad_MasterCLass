@@ -77,3 +77,10 @@ drak인지 light인지 스트링값으로 return함
             ~~ navigate("stack", {screen: "name"})
         }
         ```
+
+### Data Fetch
+```js
+const data = await (
+    await fetch('uri')
+).json()
+```
