@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './navigation/Tab';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
+import styled from 'styled-components/native';
 
 export default function App() {
   const [assets] = useAssets([require('./assets/greeting.png')])
