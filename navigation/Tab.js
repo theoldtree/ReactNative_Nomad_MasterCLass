@@ -4,20 +4,51 @@ import { useColorScheme } from 'react-native';
 import Movie from '../Screens/Movie';
 import Search from '../Screens/Search';
 import TV from '../Screens/TV';
+import { Ionicons } from '@expo/vector-icons';
+import { BLACK_COLOR, DARK_GREY, LIGHT_GREY, YELLOW_COLOR } from '../styles/constants';
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs() {
-  const colorScheme = useColorScheme();
-  console.log(colorScheme)
+  const isDark = useColorScheme() === "Dark";
   return (
     <Tab.Navigator 
       screenOptions={{
-        tabBarLabelPosition: 'beside-icon'
+        tabBarLabelPosition: 'beside-icon',
+        tabBarStyle : {
+          backgroundColor : isDark? BLACK_COLOR : "white"
+        },
+        tabBarActiveTintColor : isDark? YELLOW_COLOR : BLACK_COLOR,
+        tabBarInactiveTintColor: isDark? DARK_GREY : LIGHT_GREY,
+        headerStyle: {
+          backgroundColor : isDark? BLACK_COLOR : "white"
+        },
+        tabBarLabelStyle: {
+          fontSize: 14,
+          fontWeight:"600",
+          marginTop: 5,
+          marginBottom: 5,
+        },
+        headerTitleStyle: {
+          color: isDark ? "white" : BLACK_COLOR
+        },
+        headerTitleAlign: "center"
       }}>
-      <Tab.Screen name="Movie" component={Movie} />
-      <Tab.Screen name="TV" component={TV} />
-      <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="Movie" component={Movie} options={{
+        tabBarIcon: ({focused,color,size}) => {
+          return <Ionicons name={focused? "film" : "film-outline"} color={color} size={size}/>
+        },
+      }}/>
+      <Tab.Screen name="TV" component={TV} options={{
+        tabBarIcon: ({color,size}) => {
+          return <Ionicons name="tv-outline" color={color} size={size}/>
+        }
+      }}/>
+      <Tab.Screen name="Search" component={Search} options={{
+        tabBarIcon: ({focused,color,size}) => {
+          return <Ionicons name= {focused? "search" : "search-outline"} color={color} size={size}/>
+        }
+      }}/>
     </Tab.Navigator>
   );
 }
