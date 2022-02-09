@@ -11,6 +11,32 @@ ReactNative_Nomad_MasterCLass
 npx create-react-native-app : native에 접근가능 + 환결설정완료되어 있음
 ```
 
+
+### 팁
+* styled component을 쓴다해도 Component 에 그냥 style porp으로 스타일링 가능
+* useColorScheme() : drak인지 light인지 스트링값으로 return함 
+* StyleSheet.absoluteFill: View의 모든 공간을 채우는 style object
+* ScrollView의 refreshControl prop으로 새로고침을 관리함
+* string.slice(0,number) : 글자수 자르기
+* scrollview 보다는 flatlist나 sectionlist를 사용
+* flatlist의 keyextractor는 string값을 넘겨주어야함   
+
+
+### Flatlist
+* scrollview대신에 사용할수 있음
+* keyExtractor 값으로 string을 넘겨주어야함 => 숫자+""
+* ItemSeparatorComponent로 사이사이에 들어갈 Component를 지정해줄 수 있음
+* renderItem이 array.map역할을 함
+```js
+renderItem={({item})=>(
+    <Component
+        prop = item.name
+    />
+)}
+```
+* data={array}로 item들을 넘겨줌
+
+
 ### 어플 로딩
 * expo apploading
     - startAsync, onFinish, onError
@@ -23,10 +49,6 @@ npx create-react-native-app : native에 접근가능 + 환결설정완료되어 
     - Asset.loadAsync(require('path')) : 로컬 저장소의 asset을 로딩할때 쓰는 async 함수
     - Image.prefetch('uri') : 원격으로 asset을 가져올때 쓰는 함수 -> 그냥 이미지 저장해서 load하는게 훨씬 좋음
     - useAssets를 사용하는 것이 가장 간편한 방법
-   
-
-### useColorScheme()
-drak인지 light인지 스트링값으로 return함 
    
 
 ### React Navigation
