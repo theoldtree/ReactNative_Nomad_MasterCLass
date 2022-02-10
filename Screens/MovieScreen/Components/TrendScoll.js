@@ -11,7 +11,7 @@ const Title = styled.Text`
 
 export const TrendScroll = ({id,backdropPath,overView,originalTitle,movie}) => {
     return(
-        <View key={id} style={{marginBottom: 10, marginTop: 10}}>
+        <View key={id} style={{marginBottom: 10, marginTop: 10, marginLeft: 20}}>
             <Title>{originalTitle}</Title>
             <Title>{overView}</Title>
         </View>

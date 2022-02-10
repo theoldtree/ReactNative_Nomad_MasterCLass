@@ -13,6 +13,7 @@ npx create-react-native-app : native에 접근가능 + 환결설정완료되어 
 
 
 ### 팁
+* {} : component , () : method function
 * styled component을 쓴다해도 Component 에 그냥 style porp으로 스타일링 가능
 * useColorScheme() : drak인지 light인지 스트링값으로 return함 
 * StyleSheet.absoluteFill: View의 모든 공간을 채우는 style object
@@ -28,13 +29,15 @@ npx create-react-native-app : native에 접근가능 + 환결설정완료되어 
 * ItemSeparatorComponent로 사이사이에 들어갈 Component를 지정해줄 수 있음
 * renderItem이 array.map역할을 함
 ```js
-renderItem={({item})=>(
+renderItem = ({item})=>(
     <Component
         prop = item.name
     />
-)}
+)
 ```
+함수내용 반드시 소괄호 안에 써야됨
 * data={array}로 item들을 넘겨줌
+* listHeaderComponent나 listFooterComponent로 flatlist의 위아래를 꾸밀수 있음
 
 
 ### 어플 로딩

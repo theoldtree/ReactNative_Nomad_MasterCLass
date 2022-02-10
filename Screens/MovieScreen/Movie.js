@@ -57,7 +57,16 @@ export default function Movie() {
         setLoading(false);
     }, [])
 
+    const renderItem = ({item}) => (
+        <TrendScroll
+            overView={item.overview}
+            originalTitle={item.original_title}
+        />
+    )
 
+    const listSeprator = styled.View`
+        height: 20px;
+    `
 
     return loading ? (
         <Loader>
@@ -88,12 +97,8 @@ export default function Movie() {
             }
             keyExtractor={(item) => item.id + ""}
             data={trendingMovies}
-            renderItem={({ item }) => (
-                <TrendScroll
-                    overView={item.overview}
-                    originalTitle={item.original_title}
-                />
-            )}
+            renderItem={renderItem}
+            ItemSeparatorComponent={listSeprator}
         />
     )
 }
