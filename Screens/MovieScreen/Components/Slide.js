@@ -45,7 +45,6 @@ const Votes = styled(OverView)`
 `
 
 export default function Slide({ id, backdropPath, posterPath, voteAverage, originalTitle, overview }) {
-    console.log(originalTitle)
     return (
         <View key={id}>
             <BgImg source={{ uri: makeImagePath(backdropPath) }} />

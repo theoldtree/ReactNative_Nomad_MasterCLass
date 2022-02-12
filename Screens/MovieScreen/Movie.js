@@ -5,14 +5,8 @@ import { HEIGHT, WIDTH } from '../../styles/constants';
 import { ActivityIndicator } from 'react-native';
 import Slide from './Components/Slide';
 import { TrendScroll } from './Components/TrendScoll';
-
-const API_KEY = "be0f3f0ec9232076fd93640e71f6c33b"
-const PLAYING_URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1&region=KR`
-const UPCOMING_URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1&region=KR`
-const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`
-
-const Container = styled.ScrollView`
-`
+import { useQuery } from 'react-query';
+import { moviesApi } from '../../api';
 
 const Loader = styled.View`
     flex: 1;
@@ -24,38 +18,13 @@ const VScroll = styled.FlatList`
 `
 
 export default function Movie() {
-    const [loading, setLoading] = useState(true);
-    const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
-    const [upComingPlayingMovies, setUpComingPlayingMovies] = useState([]);
-    const [trendingMovies, setTrendingMovies] = useState([]);
 
-    const getTrending = async () => {
-        const { results } = await (
-            await fetch(TRENDING_URL)
-        ).json();
-        setTrendingMovies(results)
-    }
-    const getUpComing = async () => {
-        const { results } = await (
-            await fetch(UPCOMING_URL)
-        ).json();
-        setUpComingPlayingMovies(results)
-    }
-    const getNowPlaying = async () => {
-        const { results } = await (
-            await fetch(PLAYING_URL)
-        ).json();
-        setNowPlayingMovies(results);
-    }
-    const getData = async () => {
-        await Promise.all([getNowPlaying(), getUpComing(), getTrending()]);
-        setLoading(false);
-    }
-    useEffect(() => {
-        getNowPlaying();
-        getTrending();
-        setLoading(false);
-    }, [])
+    const result = useQuery('nowPlaying',moviesApi.getPlaying)
+    console.log(result)
+    const {isLoading:nowPlayingLoading, data:nowPlayingData} = useQuery('nowPlaying',moviesApi.getPlaying)
+    const {isLoading:trendingLoading, data:trendingData} = useQuery('trending',moviesApi.getTrending)
+
+    const loading = nowPlayingLoading || trendingLoading
 
     const renderItem = ({item}) => (
         <TrendScroll
@@ -82,7 +51,7 @@ export default function Movie() {
                         containerStyle={{ width: WIDTH, height: HEIGHT / 3.1 }}
                         showsButtons={false}
                     >
-                        {nowPlayingMovies.map(movie =>
+                        {nowPlayingData.results.map(movie =>
                             <Slide
                                 id={movie.id}
                                 backdropPath={movie.backdrop_path}
@@ -96,7 +65,7 @@ export default function Movie() {
                 </>
             }
             keyExtractor={(item) => item.id + ""}
-            data={trendingMovies}
+            data={trendingData.results}
             renderItem={renderItem}
             ItemSeparatorComponent={listSeprator}
         />

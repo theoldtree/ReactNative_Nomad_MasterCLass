@@ -12,6 +12,17 @@ npx create-react-native-app : native에 접근가능 + 환결설정완료되어 
 ```
 
 
+### ES6
+```es6
+const {name1: nickname1, name2: nickname2} = object
+nickname1, nickname2로 각각 name1과 name2를 대치할 수 있음
+```
+```es6
+const {name1, name2, name3, name4 ...} = object
+로 object에 있는 같은명칭으로 값을 할당시킬수 있음
+```
+
+
 ### 팁
 * {} : component , () : method function
 * styled component을 쓴다해도 Component 에 그냥 style porp으로 스타일링 가능

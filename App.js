@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import styled, { ThemeProvider } from 'styled-components/native'
 import { darkTheme, lightTheme } from './styles/styled';
-import { QueryClient, QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const queryClient = new QueryClient();
 
