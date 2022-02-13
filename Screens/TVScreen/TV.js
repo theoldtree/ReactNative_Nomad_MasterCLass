@@ -13,7 +13,7 @@ const Loader = styled.View`
   background-color: white;
 `;
 
-const VScroll = styled.FlatList``;
+const VScroll = styled.ScrollView``;
 
 export default function TV() {
   const { isLoading: TodayBroadCastingLoading, data: TodayBroadcastingData } =
