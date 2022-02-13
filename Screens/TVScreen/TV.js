@@ -1,20 +1,45 @@
-import React from 'react';
-import { StyleSheet, View, Text, ActivityIndicator} from 'react-native'
-import styled from 'styled-components/native'
+import React from "react";
+import { ActivityIndicator } from "react-native";
+import { useQuery } from "react-query";
+import styled from "styled-components/native";
+import { TVApi } from "../../api";
+import Poster from "./Components/Poster";
+import { TVCard } from "./TVCard";
 
-export default function TV(){
-    return(
-    <View style={styles.container}>
-        <ActivityIndicator color="#0000ff"/>
-    </View>
-    );
+const Loader = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+`;
+
+const VScroll = styled.FlatList``;
+
+export default function TV() {
+  const { isLoading: TodayBroadCastingLoading, data: TodayBroadcastingData } =
+    useQuery(["TV", "todayBroadcasting"], TVApi.getTodayOnAir);
+  const { isLoading: TopRatingTvShowLoading, data: TopRatedTvShowData } =
+    useQuery(["TV", "topRatingTvShow"], TVApi.getTopRatedTvShow);
+  const { isLoading: TrendingTVLoading, data: TrendingTVData } = useQuery(
+    ["TV", "trending"],
+    TVApi.getTrendingTV
+  );
+
+  const loading =
+    TodayBroadCastingLoading || TopRatingTvShowLoading || TrendingTVLoading;
+
+  return loading ? (
+    <Loader>
+      <ActivityIndicator color="#0000ff" />
+    </Loader>
+  ) : (
+    <VScroll>
+      <TVCard
+        listTitle="Today BroadCasting"
+        data={TodayBroadcastingData.results}
+      />
+      <TVCard listTitle="TopRating" data={TopRatedTvShowData.results} />
+      <TVCard listTitle="Trending" data={TrendingTVData.results} />
+    </VScroll>
+  );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
