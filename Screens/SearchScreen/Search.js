@@ -1,21 +1,16 @@
-import React from 'react';
-import { StyleSheet, View, Text} from 'react-native'
+import React from "react";
+import styled from "styled-components/native";
 
-export default function Search(){
-    return(
-    <View style={styles.container}>
-        <Text>
-            Search
-        </Text>
-    </View>
-    );
+const Container = styled.ScrollView``;
+
+const SearchBar = styled.TextInput`
+  background-color: white;
+`;
+
+export default function Search() {
+  return (
+    <Container>
+      <SearchBar placeholder="  Search for Movie or TV Show" />
+    </Container>
+  );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });

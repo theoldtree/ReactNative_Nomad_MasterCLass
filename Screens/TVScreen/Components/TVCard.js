@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import Poster from "./Components/Poster";
+import Poster from "./Poster";
 
 const ListContainer = styled.View``;
 

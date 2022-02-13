@@ -26,6 +26,11 @@ const {name1, name2, name3, name4 ...} = object
 로 object에 있는 같은명칭으로 값을 할당시킬수 있음
 ```
 
+```es6
+{name1 ?? name2}
+name1 이면 name1을 넘겨주고 name2면 name2를 넘겨줌
+```
+
 - Object.keys(object name) 로 object의 key array를 얻을수 있음
 - Object.map(v => typeof v) 로 object안에 있던 값들의 type을 구할수 있음
 

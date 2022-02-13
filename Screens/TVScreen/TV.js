@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import styled from "styled-components/native";
 import { TVApi } from "../../api";
 import Poster from "./Components/Poster";
-import { TVCard } from "./TVCard";
+import { TVCard } from "./Components/TVCard";
 
 const Loader = styled.View`
   flex: 1;
