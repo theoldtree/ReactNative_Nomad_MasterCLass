@@ -1,10 +1,9 @@
-import React, { isValidElement } from "react";
+import React from "react";
 import { View } from "react-native";
 import styled from "styled-components/native";
 import { HEIGHT, WIDTH } from "../../../styles/constants";
 import { makeImagePath } from "../../../util/utils";
-import { BlurView } from "expo-blur";
-import { StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const BgImg = styled.Image`
   width: ${WIDTH}px;
@@ -44,6 +43,8 @@ const Votes = styled(OverView)`
   margin-top: 12px;
 `;
 
+const Container = styled.TouchableOpacity``;
+
 export default function Slide({
   id,
   backdropPath,
@@ -52,17 +53,22 @@ export default function Slide({
   originalTitle,
   overview,
 }) {
+  const navigation = useNavigation();
+  const goDeatil = () => navigation.navigate("Stack", { screen: "Detail" });
+
   return (
-    <View key={id}>
-      <BgImg source={{ uri: makeImagePath(backdropPath) }} blurRadius={5} />
-      <Wrapper>
-        <Poster source={{ uri: makeImagePath(posterPath) }} />
-        <Column>
-          <Title>{originalTitle}</Title>
-          <OverView>{overview.slice(0, 150)} ...</OverView>
-          {voteAverage > 0 ? <Votes>⭐️{voteAverage}/10</Votes> : null}
-        </Column>
-      </Wrapper>
-    </View>
+    <Container onPress={goDeatil}>
+      <View key={id}>
+        <BgImg source={{ uri: makeImagePath(backdropPath) }} blurRadius={5} />
+        <Wrapper>
+          <Poster source={{ uri: makeImagePath(posterPath) }} />
+          <Column>
+            <Title>{originalTitle}</Title>
+            <OverView>{overview.slice(0, 150)} ...</OverView>
+            {voteAverage > 0 ? <Votes>⭐️{voteAverage}/10</Votes> : null}
+          </Column>
+        </Wrapper>
+      </View>
+    </Container>
   );
 }

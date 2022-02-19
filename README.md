@@ -31,6 +31,11 @@ const {name1, name2, name3, name4 ...} = object
 name1 이면 name1을 넘겨주고 name2면 name2를 넘겨줌
 ```
 
+```es6
+[name1, name2, name3] = [value1, value2, value3]
+위와 같은 문법으로 name1, name2, name3에 값 들을 할당시킬 수 있음
+```
+
 - Object.keys(object name) 로 object의 key array를 얻을수 있음
 - Object.map(v => typeof v) 로 object안에 있던 값들의 type을 구할수 있음
 
@@ -44,6 +49,7 @@ name1 이면 name1을 넘겨주고 name2면 name2를 넘겨줌
 - string.slice(0,number) : 글자수 자르기
 - scrollview 보다는 flatlist나 sectionlist를 사용
 - flatlist의 keyextractor는 string값을 넘겨주어야함
+- useNavigation(): navigation prop을 생성할 수 있음
 
 ### Flatlist
 

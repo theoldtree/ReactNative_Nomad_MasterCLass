@@ -9,6 +9,7 @@ import { useFonts } from "expo-font";
 import styled, { ThemeProvider } from "styled-components/native";
 import { darkTheme, lightTheme } from "./styles/styled";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Root from "./navigation/Root";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={isDark ? lightTheme : darkTheme}>
         <NavigationContainer>
-          <Tabs />
+          <Root />
         </NavigationContainer>
       </ThemeProvider>
     </QueryClientProvider>
