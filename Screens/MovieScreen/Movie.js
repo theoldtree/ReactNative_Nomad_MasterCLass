@@ -5,7 +5,7 @@ import { HEIGHT, WIDTH } from "../../styles/constants";
 import { ActivityIndicator } from "react-native";
 import Slide from "./Components/Slide";
 import { TrendScroll } from "./Components/TrendScoll";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { moviesApi } from "../../api";
 
 const Loader = styled.View`
@@ -18,7 +18,6 @@ const Loader = styled.View`
 const VScroll = styled.FlatList``;
 
 export default function Movie() {
-  const queryClient = useQueryClient();
   const { isLoading: nowPlayingLoading, data: nowPlayingData } = useQuery(
     ["movies", "nowPlaying"],
     moviesApi.getPlaying
@@ -37,6 +36,11 @@ export default function Movie() {
   const listSeprator = styled.View`
     height: 20px;
   `;
+  const goDeatil = () =>
+    navigation.navigate("Stack", {
+      screen: "Detail",
+      params: { originalTitle },
+    });
 
   return loading ? (
     <Loader>

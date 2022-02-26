@@ -54,7 +54,11 @@ export default function Slide({
   overview,
 }) {
   const navigation = useNavigation();
-  const goDeatil = () => navigation.navigate("Stack", { screen: "Detail" });
+  const goDeatil = () =>
+    navigation.navigate("Stack", {
+      screen: "Detail",
+      params: { originalTitle },
+    });
 
   return (
     <Container onPress={goDeatil}>

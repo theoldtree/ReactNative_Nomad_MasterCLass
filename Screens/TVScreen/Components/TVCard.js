@@ -1,4 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import Poster from "./Poster";
 
@@ -15,18 +17,22 @@ const HScroll = styled.FlatList`
   margin: 20px 0px;
 `;
 
-const renderItem = ({ item }) => (
-  <Poster
-    backdropPath={item.backdrop_path}
-    name={item.name}
-    vote={item.vote_average}
-  />
-);
+const renderItem = ({ item }) => {
+  console.log(item);
+  const content = item.name ?? item.original_title;
+  return (
+    <Poster
+      backdropPath={item.backdrop_path}
+      originalTitle={content}
+      vote={item.vote_average}
+    />
+  );
+};
 
-export const TVCard = ({ listTitle, data }) => {
+export const TVCard = ({ originalTitle, data }) => {
   return (
     <ListContainer>
-      <ListTitle>{listTitle}</ListTitle>
+      <ListTitle>{originalTitle}</ListTitle>
       <HScroll
         contentContainerStyle={{ paddingHorizontal: 20 }}
         horizontal

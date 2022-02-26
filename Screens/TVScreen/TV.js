@@ -35,7 +35,7 @@ export default function TV() {
   ) : (
     <VScroll>
       <TVCard
-        listTitle="Today BroadCasting"
+        originalTitle="Today BroadCasting"
         data={TodayBroadcastingData.results}
       />
       <TVCard listTitle="TopRating" data={TopRatedTvShowData.results} />
