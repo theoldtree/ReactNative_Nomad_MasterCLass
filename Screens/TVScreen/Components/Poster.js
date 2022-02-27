@@ -22,14 +22,20 @@ const Name = styled.Text`
   font-size: 18px;
 `;
 
-export default function Poster({ backdropPath, originalTitle, vote }) {
+export default function Poster({
+  backdropPath,
+  originalTitle,
+  vote,
+  fullData,
+}) {
   const navigation = useNavigation();
   const goDetail = () => {
     navigation.navigate("Stack", {
       screen: "Detail",
-      params: { originalTitle },
+      params: { originalTitle, fullData },
     });
   };
+  console.log(fullData);
   return backdropPath === null ? null : (
     <TouchableOpacity onPress={goDetail}>
       <Wrapper>

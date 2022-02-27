@@ -52,12 +52,13 @@ export default function Slide({
   voteAverage,
   originalTitle,
   overview,
+  fullData,
 }) {
   const navigation = useNavigation();
   const goDeatil = () =>
     navigation.navigate("Stack", {
       screen: "Detail",
-      params: { originalTitle },
+      params: { originalTitle, fullData },
     });
 
   return (

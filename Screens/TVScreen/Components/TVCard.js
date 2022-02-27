@@ -25,6 +25,7 @@ const renderItem = ({ item }) => {
       backdropPath={item.backdrop_path}
       originalTitle={content}
       vote={item.vote_average}
+      fullData={item}
     />
   );
 };

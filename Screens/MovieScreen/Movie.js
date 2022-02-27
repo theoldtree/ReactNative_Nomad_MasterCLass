@@ -64,6 +64,7 @@ export default function Movie() {
                 voteAverage={movie.vote_average}
                 originalTitle={movie.title}
                 overview={movie.overview}
+                fullData={movie}
               />
             ))}
           </Swiper>
