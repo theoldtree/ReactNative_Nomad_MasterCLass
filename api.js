@@ -10,9 +10,14 @@ export const moviesApi = {
   getTrending: () => fetch(PLAYING_URL).then((res) => res.json()),
   search: ({ queryKey }) => {
     const [, query] = queryKey;
-    console.log(query);
     return fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1`
+    ).then((res) => res.json());
+  },
+  detail: ({ queryKey }) => {
+    const [, id] = queryKey;
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos,images`
     ).then((res) => res.json());
   },
 };
@@ -22,11 +27,15 @@ export const TVApi = {
   getTopRatedTvShow: () => fetch(TOPRATEDTV_URL).then((res) => res.json()),
   getTrendingTV: () => fetch(TRENDINGTV_URL).then((res) => res.json()),
   search: ({ queryKey }) => {
-    console.log(data);
     const [, query] = queryKey;
-    console.log(query);
     return fetch(
       `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&query=${query}&page=1`
+    ).then((res) => res.json());
+  },
+  detail: ({ queryKey }) => {
+    const [, id] = queryKey;
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&append_to_response=videos,images`
     ).then((res) => res.json());
   },
 };

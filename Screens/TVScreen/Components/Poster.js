@@ -35,7 +35,6 @@ export default function Poster({
       params: { originalTitle, fullData },
     });
   };
-  console.log(fullData);
   return backdropPath === null ? null : (
     <TouchableOpacity onPress={goDetail}>
       <Wrapper>

@@ -18,7 +18,6 @@ const HScroll = styled.FlatList`
 `;
 
 const renderItem = ({ item }) => {
-  console.log(item);
   const content = item.name ?? item.original_title;
   return (
     <Poster
