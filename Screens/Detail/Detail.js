@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import styled from "styled-components/native";
 import { moviesApi, TVApi } from "../../api";
 import { BLACK_COLOR } from "../../styles/constants";
+import Loader from "../MovieScreen/Components/Loader";
 import Poster from "../TVScreen/Components/Poster";
 
 const Container = styled.ScrollView`
@@ -56,6 +57,7 @@ export default function Detail({
       <Content>
         <Title>{name}</Title>
         <OverView>{fullData.overview}</OverView>
+        {isLoading ? <Loader /> : null}
       </Content>
     </Container>
   );

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { ActivityIndicator, Alert } from "react-native";
 import { useQuery } from "react-query";
 import styled from "styled-components/native";
 import { moviesApi, TVApi } from "../../api";
+import Loader from "../MovieScreen/Components/Loader";
 import { TVCard } from "../TVScreen/Components/TVCard";
 
 const Container = styled.ScrollView``;
@@ -13,13 +13,6 @@ const SearchBar = styled.TextInput`
   border-radius: 15px;
   width: 90%;
   margin: 10px auto;
-`;
-
-const Loader = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
 `;
 
 export default function Search() {
@@ -54,11 +47,7 @@ export default function Search() {
         onChangeText={onTextChange}
         onSubmitEditing={onSubmint}
       />
-      {searchMovieLoading || searchTVLoading ? (
-        <Loader>
-          <ActivityIndicator />
-        </Loader>
-      ) : null}
+      {searchMovieLoading || searchTVLoading ? <Loader /> : null}
       {searchTVData ? (
         <TVCard listTitle="Search TV Results" data={searchTVData.results} />
       ) : null}

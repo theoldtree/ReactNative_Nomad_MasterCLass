@@ -1,17 +1,9 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
 import { useQuery } from "react-query";
 import styled from "styled-components/native";
 import { TVApi } from "../../api";
-import Poster from "./Components/Poster";
+import Loader from "../MovieScreen/Components/Loader";
 import { TVCard } from "./Components/TVCard";
-
-const Loader = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-`;
 
 const VScroll = styled.ScrollView``;
 
@@ -29,9 +21,7 @@ export default function TV() {
     TodayBroadCastingLoading || TopRatingTvShowLoading || TrendingTVLoading;
 
   return loading ? (
-    <Loader>
-      <ActivityIndicator color="#0000ff" />
-    </Loader>
+    <Loader />
   ) : (
     <VScroll>
       <TVCard

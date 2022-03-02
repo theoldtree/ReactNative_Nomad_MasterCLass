@@ -2,18 +2,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import Swiper from "react-native-swiper";
 import { HEIGHT, WIDTH } from "../../styles/constants";
-import { ActivityIndicator } from "react-native";
 import Slide from "./Components/Slide";
 import { TrendScroll } from "./Components/TrendScoll";
 import { useQuery } from "react-query";
 import { moviesApi } from "../../api";
-
-const Loader = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-`;
+import Loader from "./Components/Loader";
 
 const VScroll = styled.FlatList``;
 
@@ -43,9 +36,7 @@ export default function Movie() {
     });
 
   return loading ? (
-    <Loader>
-      <ActivityIndicator color="blue" />
-    </Loader>
+    <Loader />
   ) : (
     <VScroll
       ListHeaderComponent={
