@@ -46,7 +46,9 @@ name1 이면 name1을 넘겨주고 name2면 name2를 넘겨줌
 
 ### 팁
 
+- Platform.OS ==='android', Platform.OS === 'ios'로 OS여부 확인 가능
 - {} : component , () : method function
+- {}을 쓸경우 return() 안에 컴포넌트를 써야 화면이 구성됨, ()을 쓸경우 return 없이도 화면 구성이 가능
 - styled component을 쓴다해도 Component 에 그냥 style porp으로 스타일링 가능
 - useColorScheme() : drak인지 light인지 스트링값으로 return함
 - StyleSheet.absoluteFill: View의 모든 공간을 채우는 style object
