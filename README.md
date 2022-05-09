@@ -59,6 +59,7 @@ name1 이면 name1을 넘겨주고 name2면 name2를 넘겨줌
 - useNavigation(): navigation prop을 생성할 수 있음
 - 모든 screen은 렌더링시 기본적으로 주어지는 prop object가 있다
 - Text의 lineHeight prop으로 이미지의 크기와 일치하게 글자의 높이를 설정할수 있음(센터 조정)
+- useEffect(if(data){},[data]) => data가 존재할 때 화면을 다시 rendering 하여 data is undefined문제를 해결할 수 있음
 
 ### Flatlist
 
