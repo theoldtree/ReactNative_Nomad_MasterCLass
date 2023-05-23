@@ -69,14 +69,13 @@ name1 이면 name1을 넘겨주고 name2면 name2를 넘겨줌
 - renderItem이 array.map역할을 함
 
 ```js
-renderItem = ({item})=>(
-    <Component
+renderItem = ({item})=>{
+    return <Component
         prop = item.name
     />
-)
+}
 ```
 
-함수내용 반드시 소괄호 안에 써야됨
 
 - data={array}로 item들을 넘겨줌
 - listHeaderComponent나 listFooterComponent로 flatlist의 위아래를 꾸밀수 있음
